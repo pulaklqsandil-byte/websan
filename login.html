@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sign in to your ALOBORA account or create a new account for fast checkout and order tracking.">
+  <title>Account Sign In — ALOBORA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="ALOBORA home"><img src="images/alobora-logo.svg" alt="ALOBORA Logo" class="brand-logo-img"></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation"><span></span><span></span><span></span><span class="sr-only">Open menu</span></button>
+    <nav class="site-nav" id="site-navigation" aria-label="Main navigation">
+      <a href="index.html">Home</a><a href="product.html">Bottle</a><a href="about.html">Our story</a><a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a href="login.html" class="account-link is-active" aria-label="User Account">Account</a>
+      <a class="cart-link" href="product.html#purchase" aria-label="Shopping cart, 0 items">Bag <span class="cart-count">0</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="auth-section">
+      <div class="auth-container">
+        <div class="auth-card">
+          <p class="eyebrow">Customer Account</p>
+          <h1 id="auth-title">Welcome to <em>ALOBORA.</em></h1>
+          <p class="auth-subtitle">Sign in to track orders, manage delivery addresses, and enjoy faster checkout.</p>
+
+          <!-- Logged In User Profile View (Hidden by default unless logged in) -->
+          <div id="user-profile-box" class="user-profile-box" style="display: none;">
+            <div class="profile-avatar">👤</div>
+            <h3 id="profile-name">Hello, Customer</h3>
+            <p id="profile-email" class="profile-email-text">user@example.com</p>
+            <p id="profile-phone" class="profile-phone-text">+91 98765 43210</p>
+
+            <div class="profile-actions-grid">
+              <a href="checkout.html" class="button button-dark">Proceed to Checkout &rarr;</a>
+              <button type="button" id="signout-btn" class="button button-light">Sign Out</button>
+            </div>
+          </div>
+
+          <!-- Auth Form View -->
+          <div id="auth-form-box">
+            <div class="auth-tabs" role="tablist">
+              <button type="button" class="auth-tab is-active" data-tab="signin">Sign In</button>
+              <button type="button" class="auth-tab" data-tab="register">New Account</button>
+              <button type="button" class="auth-tab" data-tab="otp">OTP Quick Login</button>
+            </div>
+
+            <!-- 1. SIGN IN FORM -->
+            <form id="signin-form" class="auth-form" novalidate>
+              <div class="form-field">
+                <label for="signin-email">Email Address or Mobile Number *</label>
+                <input id="signin-email" name="identifier" type="text" placeholder="e.g. nia@example.com or 9876543210" required>
+                <p class="field-error" id="signin-email-error"></p>
+              </div>
+              <div class="form-field">
+                <label for="signin-password">Password *</label>
+                <input id="signin-password" name="password" type="password" placeholder="Enter your password" required>
+                <p class="field-error" id="signin-password-error"></p>
+              </div>
+              <div class="auth-row-between">
+                <label class="remember-label"><input type="checkbox" name="remember" checked> <span>Remember Me</span></label>
+                <a href="#forgot" id="forgot-pass-link" class="text-link">Forgot password?</a>
+              </div>
+              <button type="submit" class="button button-dark auth-submit-btn">Sign In to ALOBORA &rarr;</button>
+            </form>
+
+            <!-- 2. REGISTER FORM -->
+            <form id="register-form" class="auth-form" style="display: none;" novalidate>
+              <div class="form-field">
+                <label for="reg-name">Full Name *</label>
+                <input id="reg-name" name="fullname" type="text" placeholder="e.g. Nia Rai" required>
+                <p class="field-error" id="reg-name-error"></p>
+              </div>
+              <div class="form-field">
+                <label for="reg-phone">10-Digit Mobile Number *</label>
+                <input id="reg-phone" name="phone" type="tel" maxlength="10" placeholder="e.g. 9876543210" required>
+                <p class="field-error" id="reg-phone-error"></p>
+              </div>
+              <div class="form-field">
+                <label for="reg-email">Email Address *</label>
+                <input id="reg-email" name="email" type="email" placeholder="name@example.com" required>
+                <p class="field-error" id="reg-email-error"></p>
+              </div>
+              <div class="form-field">
+                <label for="reg-password">Create Password *</label>
+                <input id="reg-password" name="password" type="password" placeholder="At least 6 characters" required>
+                <p class="field-error" id="reg-password-error"></p>
+              </div>
+              <button type="submit" class="button button-dark auth-submit-btn">Create ALOBORA Account &rarr;</button>
+            </form>
+
+            <!-- 3. OTP QUICK LOGIN FORM -->
+            <form id="otp-form" class="auth-form" style="display: none;" novalidate>
+              <div class="form-field">
+                <label for="otp-phone">Mobile Number *</label>
+                <div class="otp-input-group">
+                  <span class="phone-prefix">+91</span>
+                  <input id="otp-phone" name="phone" type="tel" maxlength="10" placeholder="10-digit mobile number" required>
+                </div>
+                <p class="field-error" id="otp-phone-error"></p>
+              </div>
+              <div id="otp-code-field" class="form-field" style="display: none;">
+                <label for="otp-code">Enter 4-Digit OTP Code *</label>
+                <input id="otp-code" name="code" type="text" maxlength="4" placeholder="4-digit OTP code (e.g. 1234)" required>
+                <p class="field-error" id="otp-code-error"></p>
+                <p class="otp-sent-note">✓ OTP sent to your mobile number. (Test OTP: <strong>1234</strong>)</p>
+              </div>
+              <button type="button" id="send-otp-btn" class="button button-dark auth-submit-btn">Send OTP Code &rarr;</button>
+              <button type="submit" id="verify-otp-btn" class="button button-dark auth-submit-btn" style="display: none;">Verify &amp; Sign In &rarr;</button>
+            </form>
+
+            <p class="auth-status-msg" role="status" aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-branding"><a class="brand" href="index.html" aria-label="ALOBORA home"><img src="images/alobora-logo.svg" alt="ALOBORA Logo" class="brand-logo-img"></a><p>Pure. Fresh. Trusted. Built for everyday refills.</p></div>
+    <nav class="footer-links" aria-label="Footer navigation"><a href="index.html">Home</a><a href="product.html">Bottle</a><a href="about.html">Our story</a><a href="contact.html">Contact</a></nav>
+    <div class="footer-meta-col"><p class="footer-meta">© <span class="current-year"></span> ALBORA Goods. All rights reserved.</p></div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const authTabs = document.querySelectorAll(".auth-tab");
+      const signinForm = document.getElementById("signin-form");
+      const registerForm = document.getElementById("register-form");
+      const otpForm = document.getElementById("otp-form");
+      const statusMsg = document.querySelector(".auth-status-msg");
+      const userProfileBox = document.getElementById("user-profile-box");
+      const authFormBox = document.getElementById("auth-form-box");
+      const signoutBtn = document.getElementById("signout-btn");
+
+      // Check current session
+      const checkSession = () => {
+        try {
+          const user = JSON.parse(localStorage.getItem("albora_user_session"));
+          if (user && user.isLoggedIn) {
+            authFormBox.style.display = "none";
+            userProfileBox.style.display = "block";
+            document.getElementById("profile-name").textContent = `Hello, ${user.fullname || "Customer"}`;
+            document.getElementById("profile-email").textContent = user.email || user.phone || "";
+            document.getElementById("profile-phone").textContent = user.phone ? `+91 ${user.phone}` : "";
+            document.getElementById("auth-title").innerHTML = `My <em>Account</em>`;
+          } else {
+            userProfileBox.style.display = "none";
+            authFormBox.style.display = "block";
+            document.getElementById("auth-title").innerHTML = `Welcome to <em>ALOBORA.</em>`;
+          }
+        } catch(e) {}
+      };
+
+      const setSession = (userData) => {
+        const session = {
+          isLoggedIn: true,
+          fullname: userData.fullname || "ALOBORA Customer",
+          email: userData.email || "",
+          phone: userData.phone || "",
+          loginTime: new Date().toISOString()
+        };
+        try {
+          localStorage.setItem("albora_user_session", JSON.stringify(session));
+        } catch(e) {}
+        checkSession();
+      };
+
+      if (signoutBtn) {
+        signoutBtn.addEventListener("click", () => {
+          try {
+            localStorage.removeItem("albora_user_session");
+          } catch(e) {}
+          checkSession();
+          if (statusMsg) {
+            statusMsg.style.color = "var(--ink)";
+            statusMsg.textContent = "Signed out successfully.";
+          }
+        });
+      }
+
+      // Tab switching
+      authTabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+          authTabs.forEach(t => t.classList.remove("is-active"));
+          tab.classList.add("is-active");
+          const target = tab.dataset.tab;
+          signinForm.style.display = target === "signin" ? "block" : "none";
+          registerForm.style.display = target === "register" ? "block" : "none";
+          otpForm.style.display = target === "otp" ? "block" : "none";
+          statusMsg.textContent = "";
+        });
+      });
+
+      // 1. Sign In Submission
+      signinForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        statusMsg.textContent = "";
+        const identifier = document.getElementById("signin-email").value.trim();
+        const password = document.getElementById("signin-password").value.trim();
+
+        if (!identifier) {
+          document.getElementById("signin-email-error").textContent = "Please enter your email or mobile number.";
+          return;
+        } else {
+          document.getElementById("signin-email-error").textContent = "";
+        }
+
+        if (!password || password.length < 4) {
+          document.getElementById("signin-password-error").textContent = "Please enter your password.";
+          return;
+        } else {
+          document.getElementById("signin-password-error").textContent = "";
+        }
+
+        statusMsg.style.color = "var(--ink)";
+        statusMsg.textContent = "✓ Signed in successfully! Loading your account...";
+        setTimeout(() => {
+          setSession({
+            fullname: identifier.includes("@") ? identifier.split("@")[0] : "Customer",
+            email: identifier.includes("@") ? identifier : "",
+            phone: !identifier.includes("@") ? identifier : ""
+          });
+        }, 600);
+      });
+
+      // 2. Register Submission
+      registerForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        statusMsg.textContent = "";
+        const fullname = document.getElementById("reg-name").value.trim();
+        const phone = document.getElementById("reg-phone").value.trim();
+        const email = document.getElementById("reg-email").value.trim();
+        const password = document.getElementById("reg-password").value.trim();
+
+        let valid = true;
+        if (fullname.length < 2) {
+          document.getElementById("reg-name-error").textContent = "Please enter your full name.";
+          valid = false;
+        } else { document.getElementById("reg-name-error").textContent = ""; }
+
+        if (!/^[0-9]{10}$/.test(phone)) {
+          document.getElementById("reg-phone-error").textContent = "Enter a valid 10-digit Indian mobile number.";
+          valid = false;
+        } else { document.getElementById("reg-phone-error").textContent = ""; }
+
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          document.getElementById("reg-email-error").textContent = "Enter a valid email address.";
+          valid = false;
+        } else { document.getElementById("reg-email-error").textContent = ""; }
+
+        if (password.length < 6) {
+          document.getElementById("reg-password-error").textContent = "Password must be at least 6 characters.";
+          valid = false;
+        } else { document.getElementById("reg-password-error").textContent = ""; }
+
+        if (!valid) return;
+
+        statusMsg.style.color = "var(--ink)";
+        statusMsg.textContent = "✓ Account created successfully! Welcome to ALOBORA.";
+        setTimeout(() => {
+          setSession({ fullname, phone, email });
+        }, 600);
+      });
+
+      // 3. OTP Quick Login
+      const sendOtpBtn = document.getElementById("send-otp-btn");
+      const verifyOtpBtn = document.getElementById("verify-otp-btn");
+      const otpCodeField = document.getElementById("otp-code-field");
+
+      sendOtpBtn.addEventListener("click", () => {
+        const phone = document.getElementById("otp-phone").value.trim();
+        if (!/^[0-9]{10}$/.test(phone)) {
+          document.getElementById("otp-phone-error").textContent = "Enter a valid 10-digit mobile number.";
+          return;
+        }
+        document.getElementById("otp-phone-error").textContent = "";
+        sendOtpBtn.style.display = "none";
+        otpCodeField.style.display = "block";
+        verifyOtpBtn.style.display = "block";
+        statusMsg.style.color = "var(--ink)";
+        statusMsg.textContent = "✓ OTP Code sent via SMS.";
+      });
+
+      otpForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const phone = document.getElementById("otp-phone").value.trim();
+        const code = document.getElementById("otp-code").value.trim();
+
+        if (code !== "1234" && code.length !== 4) {
+          document.getElementById("otp-code-error").textContent = "Invalid OTP code. Please enter 1234.";
+          return;
+        }
+        document.getElementById("otp-code-error").textContent = "";
+
+        statusMsg.style.color = "var(--ink)";
+        statusMsg.textContent = "✓ Phone verified! Signing in...";
+        setTimeout(() => {
+          setSession({ fullname: `Member (+91 ${phone})`, phone: phone });
+        }, 600);
+      });
+
+      checkSession();
+    });
+  </script>
+</body>
+</html>

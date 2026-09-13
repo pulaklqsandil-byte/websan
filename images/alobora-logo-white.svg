@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" width="320" height="64" fill="none">
+  <!-- ALOBORA Brand Icon Drop/Wave Symbol -->
+  <g class="alobora-mark">
+    <path d="M26 6C26 6 10 26 10 37C10 45.8366 17.1634 53 26 53C34.8366 53 42 45.8366 42 37C42 26 26 6 26 6Z" fill="url(#dropGradLight)" />
+    <path d="M26 14C26 14 15 29 15 37C15 43.0751 19.9249 48 26 48C32.0751 48 37 43.0751 37 37C37 29 26 14 26 14Z" fill="url(#innerGradLight)" opacity="0.9" />
+    <path d="M22 36C22 36 24 32 28 34C31 35.5 33 39 33 42" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
+  </g>
+  
+  <!-- ALOBORA Premium Typography White -->
+  <text x="56" y="42" font-family="'Fraunces', 'DM Sans', Georgia, sans-serif" font-size="28" font-weight="700" letter-spacing="4" fill="#fffdf8">ALOBORA</text>
+  <text x="245" y="24" font-family="'DM Mono', monospace" font-size="12" font-weight="500" fill="#e7d1ad">®</text>
+
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="dropGradLight" x1="10" y1="6" x2="42" y2="53" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3d9b8f" />
+      <stop offset="50%" stop-color="#2a7b72" />
+      <stop offset="100%" stop-color="#e7d1ad" />
+    </linearGradient>
+    <linearGradient id="innerGradLight" x1="15" y1="14" x2="37" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#dae4d8" />
+      <stop offset="100%" stop-color="#3d9b8f" />
+    </linearGradient>
+  </defs>
+</svg>

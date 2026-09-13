@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The ALBORA Field Bottle: insulated stainless steel, made for everyday refills."><title>Field Bottle — ALBORA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="index.html" aria-label="ALOBORA home"><img src="images/alobora-logo.svg" alt="ALOBORA Logo" class="brand-logo-img"></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation"><span></span><span></span><span></span><span class="sr-only">Open menu</span></button><nav class="site-nav" id="site-navigation" aria-label="Main navigation"><a href="index.html">Home</a><a class="is-active" href="product.html">Bottle</a><a href="about.html">Our story</a><a href="contact.html">Contact</a></nav><div class="header-actions"><a href="login.html" class="account-link" aria-label="User Account">Account</a><a class="cart-link" href="#purchase" aria-label="Shopping cart, 0 items">Bag <span class="cart-count">0</span></a></div></header>
+  <main>
+    <section class="product-layout" id="purchase">
+      <section class="product-visual product-gallery" aria-label="Field Bottle image gallery">
+        <p class="gallery-label">FIELD BOTTLE / 01</p>
+        <div class="main-product-image">
+          <img src="images/alobora-750ml.png" alt="ALOBORA 750ml Packaged Drinking Water Bottle" width="800" height="1000">
+        </div>
+        <div class="thumbnail-row" aria-label="Choose a product view">
+          <button class="thumbnail is-selected" type="button" aria-pressed="true" aria-label="View 750 ml bottle"><img src="images/alobora-750ml.png" alt="ALOBORA 750ml Field Bottle" width="800" height="1000"></button>
+          <button class="thumbnail" type="button" aria-pressed="false" aria-label="View 500 ml bottle"><img src="images/alobora-500ml.png" alt="ALOBORA 500ml bottle" width="1024" height="576"></button>
+          <button class="thumbnail" type="button" aria-pressed="false" aria-label="View 1 L bottle"><img src="images/alobora-1l.png" alt="ALOBORA 1L bottle" width="1024" height="576"></button>
+          <button class="thumbnail" type="button" aria-pressed="false" aria-label="View 20 L jar"><img src="images/alobora-20l.png" alt="ALOBORA 20L jar" width="1024" height="576"></button>
+        </div>
+      </section>
+      <div class="product-details"><p class="eyebrow">The Field Bottle</p><h1>Water, kept <em>well.</em></h1><p class="product-price">₹699 <span>INR</span></p><p class="product-summary">A stainless-steel bottle with remarkable temperature retention and an easy-carry silhouette. Built to go everywhere, for years.</p>
+        <div class="product-badges" aria-label="Product features">
+          <span class="badge">✦ 100% BPA Free</span>
+          <span class="badge">✦ 18/8 Food Grade Steel</span>
+          <span class="badge">✦ 24h Thermal Shield</span>
+        </div>
+        <form class="purchase-form" novalidate>
+          <fieldset><legend>Choose Pack Option</legend><div class="pack-options"><label><input type="radio" name="pack" value="Single Bottle" checked><span>Single Bottle <small>Standard</small></span></label><label><input type="radio" name="pack" value="Pack of 6"><span>Pack of 6 <small>Save 10%</small></span></label><label><input type="radio" name="pack" value="Case of 12"><span>Case of 12 <small>Save 15%</small></span></label></div></fieldset>
+          <fieldset><legend>Choose a size</legend><div class="size-options"><label><input type="radio" name="size" value="200 ml"><span>200 ml <small>Pocket</small></span></label><label><input type="radio" name="size" value="250 ml"><span>250 ml <small>Petite</small></span></label><label><input type="radio" name="size" value="300 ml"><span>300 ml <small>Mini</small></span></label><label><input type="radio" name="size" value="500 ml"><span>500 ml <small>Flow</small></span></label><label><input type="radio" name="size" value="600 ml"><span>600 ml <small>Active</small></span></label><label><input type="radio" name="size" value="750 ml"><span>750 ml <small>Travel</small></span></label><label><input type="radio" name="size" value="1000 ml" checked><span>1 L <small>Signature Icon</small></span></label><label><input type="radio" name="size" value="1500 ml"><span>1.5 L <small>Tour</small></span></label><label><input type="radio" name="size" value="2000 ml"><span>2 L <small>Family</small></span></label><label><input type="radio" name="size" value="5 L"><span>5 L <small>Dispenser</small></span></label><label><input type="radio" name="size" value="10 L"><span>10 L <small>Jar</small></span></label><label><input type="radio" name="size" value="20 L"><span>20 L <small>Commercial Jar</small></span></label></div></fieldset>
+          <fieldset class="payment-options"><legend>Payment method</legend><label><input type="radio" name="payment" value="upi" checked><span><strong>UPI</strong><small>Google Pay, PhonePe, Paytm</small></span></label><label><input type="radio" name="payment" value="card"><span><strong>Credit / Debit Card &amp; NetBanking</strong><small>Secure online payment</small></span></label><label><input type="radio" name="payment" value="cod"><span><strong>Cash on Delivery</strong><small>₹40 handling fee applies</small></span></label></fieldset>
+          <fieldset class="pincode-checker-fieldset"><legend>Check Delivery Availability</legend><div class="pincode-input-row"><input type="text" id="pincode-input" maxlength="6" pattern="[0-9]{6}" placeholder="Enter 6-digit PIN code" aria-label="Enter PIN code"><button type="button" id="check-pincode-btn" class="button button-dark">Check PIN</button></div><p class="pincode-feedback-msg" role="status" aria-live="polite"></p></fieldset>
+          <section class="price-breakdown" aria-label="Order total" aria-live="polite"><div><span>Subtotal</span><strong id="subtotal-price">₹55</strong></div><div><span>Shipping</span><strong id="shipping-price">₹50</strong></div><div><span>Surcharge</span><strong id="surcharge-price">₹0</strong></div><div class="total-row"><span>Final total</span><strong id="total-price">₹105</strong></div></section>
+          <button class="button button-dark add-to-cart" type="submit">Add to bag <span aria-hidden="true">+</span></button><p class="cart-message" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="related-products-section" id="related-bottles" aria-labelledby="related-heading">
+      <div class="related-header">
+        <p class="eyebrow">Explore More Hydration</p>
+        <h2 id="related-heading">You May Also Like</h2>
+        <p>Discover complementary ALOBORA bottle sizes designed for your daily routine.</p>
+      </div>
+      <div class="related-grid" id="related-cards-container">
+        <!-- Rendered dynamically by js/main.js based on selected bottle -->
+      </div>
+      <div class="related-footer-action">
+        <a href="#full-catalog" class="text-link">View All 12 ALOBORA Bottles &rarr;</a>
+      </div>
+    </section>
+
+    <section class="catalog-section" id="full-catalog">
+      <div class="catalog-header">
+        <p class="eyebrow">Complete ALOBORA Family</p>
+        <h2>Choose the bottle that <em>fits your day.</em></h2>
+        <p>From compact pocket bottles for short walks to heavy-duty dispenser jars for home and office.</p>
+        <div class="catalog-tabs" role="tablist">
+          <button type="button" class="catalog-tab is-active" data-category="all">All Sizes (12)</button>
+          <button type="button" class="catalog-tab" data-category="small">On-The-Go (200–300ml)</button>
+          <button type="button" class="catalog-tab" data-category="everyday">Everyday (500–750ml)</button>
+          <button type="button" class="catalog-tab" data-category="large">Family (1L–2L)</button>
+          <button type="button" class="catalog-tab" data-category="home_office">Home &amp; Office (5L–20L)</button>
+        </div>
+      </div>
+      <div class="catalog-grid" id="catalog-cards-container">
+        <!-- Rendered dynamically by js/main.js from ALOBORA_PRODUCT_CATALOG -->
+      </div>
+    </section>
+
+    <section class="spec-section"><div><p class="eyebrow">The details, considered</p><h2>Less to think about when you’re out there.</h2></div><dl class="spec-list"><div><dt>Materials</dt><dd>100% Recyclable Food-Grade PET &amp; Stainless Steel, Zero-BPA Seals</dd></div><div><dt>Purification</dt><dd>Multi-stage microfiltration &amp; UV-C purification</dd></div><div><dt>Range</dt><dd>200 ml pocket bottles up to 20 L commercial dispenser jars</dd></div><div><dt>Quality Guarantee</dt><dd>Rigorous purity and mineral balance checks before sealing.</dd></div></dl></section>
+    <section class="product-quote"><p>“The one thing we wanted to make was a bottle you could trust completely.”</p><span>— NIA RAI, FOUNDER</span></section>
+  </main>
+  <footer class="site-footer"><div class="footer-branding"><a class="brand" href="index.html" aria-label="ALOBORA home"><img src="images/alobora-logo.svg" alt="ALOBORA Logo" class="brand-logo-img"></a><p>Pure. Fresh. Trusted. Built for everyday refills.</p></div><nav class="footer-links" aria-label="Footer navigation"><a href="index.html">Home</a><a href="product.html">Bottle</a><a href="about.html">Our story</a><a href="index.html#purity-standards">Purity</a><a href="index.html#sustainability">Sustainability</a><a href="contact.html">Contact</a></nav><div class="footer-meta-col"><div class="footer-social"><a href="contact.html">Studio</a><a href="product.html">Field Bottle</a></div><p class="footer-meta">© <span class="current-year"></span> ALBORA Goods. All rights reserved.</p></div></footer><script src="js/product-data.js"></script><script src="js/main.js"></script>
+</body>
+</html>

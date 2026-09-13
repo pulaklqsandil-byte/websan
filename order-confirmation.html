@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Order confirmation receipt for ALOBORA water bottle purchase.">
+  <title>Order Confirmed — ALBORA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="ALOBORA home"><img src="images/alobora-logo.svg" alt="ALOBORA Logo" class="brand-logo-img"></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation"><span></span><span></span><span></span><span class="sr-only">Open menu</span></button>
+    <nav class="site-nav" id="site-navigation" aria-label="Main navigation">
+      <a href="index.html">Home</a><a href="product.html">Bottle</a><a href="about.html">Our story</a><a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-actions"><a href="login.html" class="account-link" aria-label="User Account">Account</a><a class="cart-link" href="#cart" aria-label="Shopping cart, 0 items">Bag <span class="cart-count">0</span></a></div>
+  </header>
+
+  <main>
+    <section class="confirmation-section">
+      <div class="confirmation-card">
+        <div class="confirmation-badge">✓</div>
+        <p class="eyebrow">Order Status: Verified</p>
+        <h1>Order Confirmed!</h1>
+        <p class="confirmation-subtext">Thank you for choosing ALOBORA. Your pure hydration carry is being prepared for dispatch.</p>
+        
+        <div class="order-id-box">
+          <span>Order Reference ID</span>
+          <strong id="conf-order-id">#ALB-00000</strong>
+        </div>
+
+        <div class="confirmation-details-grid">
+          <div class="details-block">
+            <h3>Customer &amp; Shipping Address</h3>
+            <p id="conf-customer-name"><strong>Name:</strong> -</p>
+            <p id="conf-customer-contact"><strong>Contact:</strong> -</p>
+            <p id="conf-shipping-address"><strong>Address:</strong> -</p>
+          </div>
+          <div class="details-block">
+            <h3>Payment &amp; Delivery Info</h3>
+            <p id="conf-payment-method"><strong>Payment Mode:</strong> -</p>
+            <p id="conf-payment-status"><strong>Payment Status:</strong> <span class="status-verified">Verified &amp; Paid</span></p>
+            <p id="conf-delivery-est"><strong>Estimated Delivery:</strong> 2–3 Business Days</p>
+          </div>
+        </div>
+
+        <div class="confirmation-items-table">
+          <h3>Items Ordered</h3>
+          <div id="conf-items-list" class="conf-items-list"></div>
+        </div>
+
+        <div class="confirmation-totals">
+          <div><span>Subtotal</span><strong id="conf-subtotal">₹0</strong></div>
+          <div><span>Shipping</span><strong id="conf-shipping">₹0</strong></div>
+          <div><span>Surcharge</span><strong id="conf-surcharge">₹0</strong></div>
+          <div class="conf-total-line"><span>Total Paid</span><strong id="conf-total">₹0</strong></div>
+        </div>
+
+        <div class="confirmation-actions">
+          <button type="button" class="button button-dark" onclick="window.print();">Print Official Receipt 🖨</button>
+          <a href="index.html" class="button button-light">Back to Homepage &rarr;</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-branding"><a class="brand" href="index.html" aria-label="ALOBORA home"><img src="images/alobora-logo.svg" alt="ALOBORA Logo" class="brand-logo-img"></a><p>Pure. Fresh. Trusted. Built for everyday refills.</p></div>
+    <nav class="footer-links" aria-label="Footer navigation"><a href="index.html">Home</a><a href="product.html">Bottle</a><a href="about.html">Our story</a><a href="contact.html">Contact</a></nav>
+    <div class="footer-meta-col"><p class="footer-meta">© <span class="current-year"></span> ALBORA Goods. All rights reserved.</p></div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      try {
+        const orderData = JSON.parse(localStorage.getItem("albora_last_order"));
+        if (!orderData || !orderData.orderId) return;
+
+        document.getElementById("conf-order-id").textContent = `#${orderData.orderId}`;
+        document.getElementById("conf-customer-name").innerHTML = `<strong>Name:</strong> ${orderData.customer.fullname}`;
+        document.getElementById("conf-customer-contact").innerHTML = `<strong>Contact:</strong> ${orderData.customer.phone} | ${orderData.customer.email}`;
+        
+        const addr = orderData.address;
+        document.getElementById("conf-shipping-address").innerHTML = `<strong>Address:</strong> ${addr.flat}, ${addr.street}, ${addr.city}, ${addr.state} - ${addr.pincode}`;
+        
+        const payNames = { upi: "UPI / Instant Transfer", card: "Credit/Debit Card & NetBanking", cod: "Cash on Delivery" };
+        document.getElementById("conf-payment-method").innerHTML = `<strong>Payment Mode:</strong> ${payNames[orderData.paymentMethod] || orderData.paymentMethod}`;
+        
+        document.getElementById("conf-subtotal").textContent = `₹${orderData.subtotal}`;
+        document.getElementById("conf-shipping").textContent = orderData.shipping === 0 ? "Free" : `₹${orderData.shipping}`;
+        document.getElementById("conf-surcharge").textContent = `₹${orderData.surcharge}`;
+        document.getElementById("conf-total").textContent = `₹${orderData.total}`;
+
+        const itemsContainer = document.getElementById("conf-items-list");
+        if (itemsContainer && Array.isArray(orderData.items)) {
+          itemsContainer.innerHTML = orderData.items.map(item => `
+            <div class="conf-item-row" style="display:flex; justify-content:space-between; padding:0.6rem 0; border-bottom:1px solid var(--line); font-size:0.9rem;">
+              <span><strong>${item.name} (${item.size})</strong> - Pack: ${item.color} &times; ${item.quantity}</span>
+              <strong style="font-family:var(--mono);">₹${item.price * item.quantity}</strong>
+            </div>
+          `).join("");
+        }
+      } catch (err) {}
+    });
+  </script>
+</body>
+</html>
